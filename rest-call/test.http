@@ -25,3 +25,21 @@ Content-Type: application/json
     "email": "test@test.test",
     "password": "jake"
 }
+
+### find current user
+GET http://localhost:4000/api/user/
+Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFpZGluIiwiaWF0IjoxNTg3OTM1Njc3LCJleHAiOjE1ODc5MzkyNzd9.7GljMZevFV-iISBqecLBUg7Qi_60kMdpUL0CrZdhpoc
+
+### update user
+PUT http://localhost:4000/api/user/
+Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFpZGluIiwiaWF0IjoxNTg3OTM1Njc3LCJleHAiOjE1ODc5MzkyNzd9.7GljMZevFV-iISBqecLBUg7Qi_60kMdpUL0CrZdhpoc
+Content-Type: application/json
+
+{
+    "bio": "updated bio 123",
+    "image": "img"
+}
+
+### get user profile
+GET http://localhost:4000/api/profiles/aidin
+Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFpZGluIiwiaWF0IjoxNTg3OTM1Njc3LCJleHAiOjE1ODc5MzkyNzd9.7GljMZevFV-iISBqecLBUg7Qi_60kMdpUL0CrZdhpoc
