@@ -1,0 +1,27 @@
+### register user
+POST http://localhost:4000/api/users
+Content-Type: application/json
+
+{
+    "username": "aidin_test",
+    "email": "aidin.firouzabady@gmail.com",
+    "password": "password"
+}
+
+### login user
+POST http://localhost:4000/api/users/login
+Content-Type: application/json
+
+{
+    "email": "aidin.firouzabady@gmail.com",
+    "password": "password"
+}
+
+### login user with bad email
+POST http://localhost:4000/api/users/login
+Content-Type: application/json
+
+{
+    "email": "test@test.test",
+    "password": "jake"
+}
