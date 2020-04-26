@@ -3,8 +3,8 @@ POST http://localhost:4000/api/users
 Content-Type: application/json
 
 {
-    "username": "aidin_test",
-    "email": "aidin.firouzabady@gmail.com",
+    "username": "aidin_test_2",
+    "email": "aidin.firouzabady_2@gmail.com",
     "password": "password"
 }
 
@@ -13,7 +13,7 @@ POST http://localhost:4000/api/users/login
 Content-Type: application/json
 
 {
-    "email": "aidin.firouzabady@gmail.com",
+    "email": "aidin.firouzabady_2@gmail.com",
     "password": "password"
 }
 
@@ -28,11 +28,11 @@ Content-Type: application/json
 
 ### find current user
 GET http://localhost:4000/api/user/
-Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFpZGluIiwiaWF0IjoxNTg3OTM1Njc3LCJleHAiOjE1ODc5MzkyNzd9.7GljMZevFV-iISBqecLBUg7Qi_60kMdpUL0CrZdhpoc
+Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFpZGluX3Rlc3RfMiIsImlhdCI6MTU4Nzk0MTMwMiwiZXhwIjoxNTg3OTQ0OTAyfQ.IDmHjXtmrdO3k8O2SDqstasEymITad_yC2xcxg7nJqI
 
 ### update user
 PUT http://localhost:4000/api/user/
-Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFpZGluIiwiaWF0IjoxNTg3OTM1Njc3LCJleHAiOjE1ODc5MzkyNzd9.7GljMZevFV-iISBqecLBUg7Qi_60kMdpUL0CrZdhpoc
+Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFpZGluX3Rlc3RfMiIsImlhdCI6MTU4Nzk0MTMwMiwiZXhwIjoxNTg3OTQ0OTAyfQ.IDmHjXtmrdO3k8O2SDqstasEymITad_yC2xcxg7nJqI
 Content-Type: application/json
 
 {
@@ -42,4 +42,14 @@ Content-Type: application/json
 
 ### get user profile
 GET http://localhost:4000/api/profiles/aidin
-Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFpZGluIiwiaWF0IjoxNTg3OTM1Njc3LCJleHAiOjE1ODc5MzkyNzd9.7GljMZevFV-iISBqecLBUg7Qi_60kMdpUL0CrZdhpoc
+Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFpZGluX3Rlc3RfMiIsImlhdCI6MTU4Nzk0MTMwMiwiZXhwIjoxNTg3OTQ0OTAyfQ.IDmHjXtmrdO3k8O2SDqstasEymITad_yC2xcxg7nJqI
+
+### follow
+POST http://localhost:4000/api/profiles/aidin_test_2/follow/
+Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFpZGluX3Rlc3RfMiIsImlhdCI6MTU4Nzk0MTMwMiwiZXhwIjoxNTg3OTQ0OTAyfQ.IDmHjXtmrdO3k8O2SDqstasEymITad_yC2xcxg7nJqI
+ 
+
+ ### unfollow
+DELETE http://localhost:4000/api/profiles/aidin_test_2/follow/
+Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFpZGluX3Rlc3RfMiIsImlhdCI6MTU4Nzk0MTMwMiwiZXhwIjoxNTg3OTQ0OTAyfQ.IDmHjXtmrdO3k8O2SDqstasEymITad_yC2xcxg7nJqI
+ 
