@@ -24,11 +24,11 @@ export class UserEntity extends AbstractEntity {
     @Exclude()
     password: string;
 
-    @ManyToMany(type => UserEntity, user => user.followee)
+    @ManyToMany(() => UserEntity, user => user.followee)
     @JoinTable()
     followers: UserEntity[];
 
-    @ManyToMany(type => UserEntity, user => user.followers)
+    @ManyToMany(() => UserEntity, user => user.followers)
     followee: UserEntity[];
 
     @BeforeInsert()
