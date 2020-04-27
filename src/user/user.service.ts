@@ -11,13 +11,16 @@ export class UserService {
     private userRepo: Repository<UserEntity>,
   ) {}
 
-  async findByUsername(username: string): Promise<UserEntity> {
-    return this.userRepo.findOne({ where: { username } });
-  }
-
-  async updateUser(username: string, data: UpdateUserDTO) {
-    await this.userRepo.update({ username }, data);
-    return this.findByUsername(username);
+  async findByUsername(
+    username: string,
+    user?: UserEntity,
+  ): Promise<UserEntity> {
+    return (
+      await this.userRepo.findOne({
+        where: { username },
+        relations: ['followers'],
+      })
+    ).toProfile(user);
   }
 
   async unfollowUser(currentUser: UserEntity, username: string) {
@@ -25,11 +28,9 @@ export class UserService {
       where: { username },
       relations: ['followers'],
     });
-    console.log(user)
     user.followers = user.followers.filter(
       follower => follower.email !== currentUser.email,
     );
-    console.log(user)
     await user.save();
     return user.toProfile(currentUser);
   }

@@ -1,24 +1,34 @@
-import { Controller, Get, UseGuards, Body, Put, ValidationPipe } from '@nestjs/common';
-import { UserService } from './user.service';
+import {
+  Controller,
+  Get,
+  UseGuards,
+  Body,
+  Put,
+  ValidationPipe,
+} from '@nestjs/common';
 import { User } from '../auth/user.decorator';
-import { AuthGuard } from '@nestjs/passport'
+import { AuthGuard } from '@nestjs/passport';
 import { UserEntity } from '../entities/user.entity';
 import { UpdateUserDTO } from '../models/user.model';
+import { AuthService } from '../auth/auth.service';
 
 @Controller('user')
 export class UserController {
-    constructor(private userService: UserService){ }
+  constructor(private authService: AuthService) {}
 
-    @Get()
-    @UseGuards(AuthGuard())
-     findCurrentUser(@User(){ username }: UserEntity) {
-        return  this.userService.findByUsername(username);
-    }
+  @Get()
+  @UseGuards(AuthGuard())
+   findCurrentUser(@User() { username }: UserEntity) {
+    return this.authService.findCurrentUser(username);
+  }
 
-    @Put()
-    @UseGuards(AuthGuard())
-    update(@User(){ username }: UserEntity, @Body(new ValidationPipe({transform: true,whitelist: true})) data: UpdateUserDTO){
-        return this.userService.updateUser(username, data);
-
-    }
+  @Put()
+  @UseGuards(AuthGuard())
+  update(
+    @User() { username }: UserEntity,
+    @Body(new ValidationPipe({ transform: true, whitelist: true }))
+    data: {user: UpdateUserDTO},
+  ) {
+    return this.authService.updateUser(username, data.user);
+  }
 }
